@@ -29,7 +29,7 @@ class Habit extends Component {
           <i className="fas fa-minus-square"></i>
         </button>
         <button
-          className="habit-button habit-trash"
+          className="habit-button habit-delete habit-trash"
           onClick={this.handleDelete}
         >
           <i className="fas fa-trash"></i>
