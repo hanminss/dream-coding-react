@@ -1,17 +1,21 @@
-import React, { Component } from "react";
+import React, { PureComponent } from 'react';
 
-class Habit extends Component {
+class Habit extends PureComponent {
   handleIncrement = () => {
     this.props.onIncrement(this.props.habit);
   };
+
   handleDecrement = () => {
     this.props.onDecrement(this.props.habit);
   };
+
   handleDelete = () => {
     this.props.onDelete(this.props.habit);
   };
+
   render() {
     const { name, count } = this.props.habit;
+    console.log(`habit: ${name}`);
     return (
       <li className="habit">
         <span className="habit-name">{name}</span>
@@ -29,7 +33,7 @@ class Habit extends Component {
           <i className="fas fa-minus-square"></i>
         </button>
         <button
-          className="habit-button habit-delete habit-trash"
+          className="habit-button habit-delete"
           onClick={this.handleDelete}
         >
           <i className="fas fa-trash"></i>

@@ -1,28 +1,44 @@
-import React, { Component } from "react";
-import Habit from "./habit";
-import HabitAddForm from "./habitAddForm";
+import React, { Component } from 'react';
+import Habit from './habit';
+import HabitAddForm from './habitAddForm';
 
 class Habits extends Component {
+  handleIncrement = habit => {
+    this.props.onIncrement(habit);
+  };
+
+  handleDecrement = habit => {
+    this.props.onDecrement(habit);
+  };
+
+  handleDelete = habit => {
+    this.props.onDelete(habit);
+  };
+
+  handleAdd = name => {
+    this.props.onAdd(name);
+  };
+
   render() {
-    // const habits = this.props.habits; 엘리는 변수설정을 안하고 바로 넣어주었다.
+    console.log('habits');
     return (
-      <>
-        <HabitAddForm onAdd={this.props.onAdd} />
+      <div className="habits">
+        <HabitAddForm onAdd={this.handleAdd} />
         <ul>
-          {this.props.habits.map((habit) => (
+          {this.props.habits.map(habit => (
             <Habit
               key={habit.id}
               habit={habit}
-              onIncrement={this.props.onIncrement}
-              onDecrement={this.props.onDecrement}
-              onDelete={this.props.onDelete}
+              onIncrement={this.handleIncrement}
+              onDecrement={this.handleDecrement}
+              onDelete={this.handleDelete}
             />
           ))}
         </ul>
         <button className="habits-reset" onClick={this.props.onReset}>
-          Reset
+          Reset All
         </button>
-      </>
+      </div>
     );
   }
 }
